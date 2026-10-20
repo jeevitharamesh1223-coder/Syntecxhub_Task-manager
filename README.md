@@ -1,16 +1,115 @@
-# React + Vite
+# TaskFlow – Task Manager
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+TaskFlow is a full-stack task management web application that helps users organize, track, and manage their daily tasks through a simple and user-friendly interface.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **User Authentication** – Register and log in securely.
+- **Task Management** – Create, view, edit, complete, and delete tasks.
+- **Task Search** – Find tasks quickly.
+- **Filtering and Sorting** – Organize tasks based on their status and order.
+- **Dashboard Statistics** – View total, completed, and pending tasks.
+- **User-Specific Tasks** – Each user can access only their own tasks.
+- **Database Persistence** – Store user accounts and tasks in MongoDB.
+- **Responsive Interface** – A clean interface for managing daily work.
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+**Frontend**
+- React
+- Vite
+- CSS
 
-## Expanding the ESLint configuration
+**Backend**
+- Node.js
+- Express.js
+- REST API
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+**Database**
+- MongoDB Atlas
+- Mongoose
+
+**Authentication and Security**
+- JSON Web Tokens (JWT)
+- bcryptjs for password hashing
+- Protected API routes
+
+**Version Control**
+- Git
+- GitHub
+
+## Project Structure
+
+```text
+task-manager/
+├── public/
+├── server/
+│   ├── middleware/
+│   │   └── auth.js
+│   ├── models/
+│   │   ├── Task.js
+│   │   └── User.js
+│   ├── routes/
+│   │   ├── auth.js
+│   │   └── tasks.js
+│   ├── .env
+│   ├── package.json
+│   └── server.js
+├── src/
+│   ├── assets/
+│   ├── App.jsx
+│   ├── App.css
+│   ├── index.css
+│   └── main.jsx
+├── .gitignore
+├── index.html
+├── package.json
+└── README.md
+```
+
+## Getting Started
+
+### Prerequisites
+
+Install the following before running the project:
+
+- Node.js and npm
+- MongoDB Atlas account or another configured MongoDB database
+- Git
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/jeevitharamesh1223-coder/Syntecxhub_Task-manager.git
+cd Syntecxhub_Task-manager
+```
+
+### 2. Install Frontend Dependencies
+
+From the project root directory, run:
+
+```bash
+npm install
+```
+
+### 3. Install Backend Dependencies
+
+```bash
+cd server
+npm install
+```
+
+### 4. Configure Environment Variables
+
+Create a `.env` file inside the `server` directory.
+
+Add your own configuration:
+
+```env
+PORT=5000
+MONGO_URI=your_mongodb_connection_string
+JWT_SECRET=your_strong_random_secret
+JWT_EXPIRES_IN=your_configured_expiry
+```
+
+Replace the example values with your actual configuration. Never commit your `.env` file
