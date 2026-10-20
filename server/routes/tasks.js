@@ -5,10 +5,35 @@ const Task = require("../models/Task");
 
 const router = express.Router();
 
+// Validate an optional due date
+function validateDueDate(value) {
+  if (value === null || value === "") {
+    return { valid: true, value: null };
+  }
+
+  if (typeof value !== "string" || !/^\d{4}-\d{2}-\d{2}(?:T.*)?$/.test(value)) {
+    return { valid: false };
+  }
+
+  const date = new Date(value);
+
+  if (
+    Number.isNaN(date.getTime()) ||
+    (
+      /^\d{4}-\d{2}-\d{2}$/.test(value) &&
+      date.toISOString().slice(0, 10) !== value
+    )
+  ) {
+    return { valid: false };
+  }
+
+  return { valid: true, value: date };
+}
+
 // CREATE a task belonging to the logged-in user
 router.post("/", async (req, res) => {
   try {
-    const { title } = req.body;
+    const { title, dueDate } = req.body;
 
     if (typeof title !== "string" || !title.trim()) {
       return res.status(400).json({
@@ -22,10 +47,24 @@ router.post("/", async (req, res) => {
       });
     }
 
-    const task = await Task.create({
+    const taskData = {
       title: title.trim(),
       user: req.userId,
-    });
+    };
+
+    if (Object.prototype.hasOwnProperty.call(req.body, "dueDate")) {
+      const result = validateDueDate(dueDate);
+
+      if (!result.valid) {
+        return res.status(400).json({
+          message: "Please provide a valid due date or null.",
+        });
+      }
+
+      taskData.dueDate = result.value;
+    }
+
+    const task = await Task.create(taskData);
 
     return res.status(201).json(task);
   } catch (error) {
@@ -58,7 +97,7 @@ router.get("/", async (req, res) => {
 router.patch("/:id", async (req, res) => {
   try {
     const { id } = req.params;
-    const { title, completed } = req.body;
+    const { title, completed, dueDate } = req.body;
 
     if (!mongoose.isValidObjectId(id)) {
       return res.status(400).json({
@@ -94,9 +133,21 @@ router.patch("/:id", async (req, res) => {
       updates.completed = completed;
     }
 
+    if (Object.prototype.hasOwnProperty.call(req.body, "dueDate")) {
+      const result = validateDueDate(dueDate);
+
+      if (!result.valid) {
+        return res.status(400).json({
+          message: "Please provide a valid due date or null.",
+        });
+      }
+
+      updates.dueDate = result.value;
+    }
+
     if (Object.keys(updates).length === 0) {
       return res.status(400).json({
-        message: "Provide a title or completed status to update.",
+        message: "Provide a title, completed status, or due date to update.",
       });
     }
 
