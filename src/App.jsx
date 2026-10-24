@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 
-const API_URL = "http://localhost:5000";
+const API_URL = "https://taskflow-api-vry6.onrender.com";
 const TASKS_URL = `${API_URL}/api/tasks`;
 const AUTH_URL = `${API_URL}/api/auth`;
 
