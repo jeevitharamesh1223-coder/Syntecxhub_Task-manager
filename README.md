@@ -1,115 +1,172 @@
-# TaskFlow – Task Manager
+# 🚀 TaskFlow – Full Stack Task Manager
 
-TaskFlow is a full-stack task management web application that helps users organize, track, and manage their daily tasks through a simple and user-friendly interface.
+A modern full-stack **Task Manager Web Application** built with **React, Node.js, Express, MongoDB Atlas, and JWT Authentication**. Users can create an account, log in securely, and manage their personal tasks online.
 
-## Features
+## 🌐 Live Demo
 
-- **User Authentication** – Register and log in securely.
-- **Task Management** – Create, view, edit, complete, and delete tasks.
-- **Task Search** – Find tasks quickly.
-- **Filtering and Sorting** – Organize tasks based on their status and order.
-- **Dashboard Statistics** – View total, completed, and pending tasks.
-- **User-Specific Tasks** – Each user can access only their own tasks.
-- **Database Persistence** – Store user accounts and tasks in MongoDB.
-- **Responsive Interface** – A clean interface for managing daily work.
+**Live Website:** https://taskflow-frontend-i3ky.onrender.com
 
-## Tech Stack
+**Backend API:** https://taskflow-api-vry6.onrender.com
 
-**Frontend**
+## 📌 Features
+
+- User Registration and Login (JWT Authentication)
+- Secure Protected Routes
+- Create Tasks
+- Edit Tasks
+- Delete Tasks
+- Mark Tasks as Completed
+- Search Tasks
+- Filter (All, Completed, Pending)
+- Sort Tasks (Newest, Oldest, A–Z, Z–A)
+- Task Statistics Dashboard
+- Data Stored in MongoDB Atlas
+- Fully Responsive Dark-Themed UI
+- Live Deployment on Render
+
+## 🛠 Tech Stack
+
+### Frontend
+
 - React
 - Vite
-- CSS
+- JavaScript
+- HTML5
+- CSS3
 
-**Backend**
+### Backend
+
 - Node.js
 - Express.js
-- REST API
 
-**Database**
+### Database
+
 - MongoDB Atlas
 - Mongoose
 
-**Authentication and Security**
-- JSON Web Tokens (JWT)
-- bcryptjs for password hashing
-- Protected API routes
+### Authentication
 
-**Version Control**
-- Git
+- JSON Web Token (JWT)
+- bcryptjs
+
+### Deployment
+
+- Render (Frontend)
+- Render (Backend)
 - GitHub
 
-## Project Structure
+## 📷 Project Preview
 
-```text
-task-manager/
+> Add screenshots of your login page and dashboard here.
+
+## 📂 Project Structure
+
+<escape>task-manager/
+│
+├── src/                 # React Frontend
 ├── public/
 ├── server/
 │   ├── middleware/
-│   │   └── auth.js
 │   ├── models/
-│   │   ├── Task.js
-│   │   └── User.js
 │   ├── routes/
-│   │   ├── auth.js
-│   │   └── tasks.js
-│   ├── .env
-│   ├── package.json
 │   └── server.js
-├── src/
-│   ├── assets/
-│   ├── App.jsx
-│   ├── App.css
-│   ├── index.css
-│   └── main.jsx
-├── .gitignore
-├── index.html
 ├── package.json
-└── README.md
-```
+└── README.md</escape>
 
-## Getting Started
+## ⚙ Installation
 
-### Prerequisites
-
-Install the following before running the project:
-
-- Node.js and npm
-- MongoDB Atlas account or another configured MongoDB database
-- Git
-
-### 1. Clone the Repository
+### Clone the Repository
 
 ```bash
 git clone https://github.com/jeevitharamesh1223-coder/Syntecxhub_Task-manager.git
 cd Syntecxhub_Task-manager
 ```
 
-### 2. Install Frontend Dependencies
-
-From the project root directory, run:
+### Install Frontend
 
 ```bash
 npm install
 ```
 
-### 3. Install Backend Dependencies
+### Install Backend
 
 ```bash
 cd server
 npm install
 ```
 
-### 4. Configure Environment Variables
+### Environment Variables
 
-Create a `.env` file inside the `server` directory.
-
-Add your own configuration:
+Create `server/.env`
 
 ```env
-PORT=5000
 MONGO_URI=your_mongodb_connection_string
-JWT_SECRET=your_strong_random_secret
-JWT_EXPIRES_IN=your_configured_expiry
+JWT_SECRET=your_secret_key
+JWT_EXPIRES_IN=1d
+PORT=5000
 ```
 
-Replace the example values with your actual configuration. Never commit your `.env` file
+> Keep your `.env` file private and never commit it to GitHub.
+
+### Run the Project
+
+Backend
+
+```bash
+cd server
+npm start
+```
+
+Frontend
+
+```bash
+npm run dev
+```
+
+## API Endpoints
+
+### Authentication
+
+- `POST /api/auth/register`
+- `POST /api/auth/login`
+
+### Tasks
+
+- `GET /api/tasks`
+- `POST /api/tasks`
+- `PATCH /api/tasks/:id`
+- `DELETE /api/tasks/:id`
+
+## Testing
+
+The deployed application has been tested for:
+
+- User Registration
+- Login
+- JWT Authentication
+- Task Creation
+- Task Editing
+- Task Completion
+- Task Deletion
+- Page Refresh Persistence
+- Logout and Login Again
+
+## Learning Outcomes
+
+This project helped me practice:
+
+- Full-stack application development
+- REST API development
+- JWT Authentication
+- MongoDB Atlas integration
+- React state management
+- CRUD operations
+- Git and GitHub workflow
+- Cloud deployment using Render
+
+## Author
+
+**Jeevitha Ramesh**
+
+- GitHub: https://github.com/jeevitharamesh1223-coder
+- Live Project: https://taskflow-frontend-i3ky.onrender.com
